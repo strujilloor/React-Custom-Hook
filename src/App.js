@@ -1,9 +1,10 @@
 import React from 'react';
+import Formulario from './components/Formulario';
 
 function App() {
   return (
-    <div>
-      hello world
+    <div className="container mt-5">
+      <Formulario />
     </div>
   );
 }
