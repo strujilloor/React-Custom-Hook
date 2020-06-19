@@ -1,31 +1,25 @@
 import React, { useState } from 'react';
+import useForm from '../hooks/useForm';
 
 const Formulario = () => {
-    // there is no problem if inputs are a empty object
-    // because input value attribute has a || condition
-    const [inputs, setInputs] = useState({});
 
-    // When input change, update inputs state
-    const handleInputChange = (e) => {
-        e.persist();
-        const { name, value } = e.target;
-        setInputs( { ...inputs, [name]:value } );
-    }
-
-    // When form submit, show state in console, and
-    // clear fields 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const showFieldsConsole = () => {
         console.log(inputs.nombre);
         console.log(inputs.apellido);
-        setInputs({nombre: '', apellido: ''});
     }
+    
+    const { 
+        inputs,
+        handleInputChange,
+        handleSubmit
+    } = useForm( showFieldsConsole ); // we send it the submit function
 
     return (
         <form 
             className="w-50 mx-auto card p-3"
             onSubmit={ handleSubmit }
         >
+            <h2 className="text-center">Custom Hook</h2>
             <div className="form-group">
                 <label htmlFor="nombre">Nombre</label>
                 <input 
@@ -35,7 +29,7 @@ const Formulario = () => {
                     className="form-control"
                     placeholder="Ingrese su nombre"
                     onChange={ handleInputChange }
-                    value={ inputs.nombre || '' }
+                    value={ inputs.nombre || '' } // prevent uncontrolled inputs
                 />
             </div>
             <div className="form-group">
