@@ -2,6 +2,8 @@
 
 Documented example, creating a custom hook to manage the state of any form
 
+Hooks allows you to extract component logic into reusable functions.
+
 
 ## Installation
 
